@@ -26,16 +26,5 @@
 
 ---
 
-### 📊 GitHub Stats
-<div align="center">
-  
-![Ramtanay’s GitHub stats](https://github-readme-stats.vercel.app/api?username=ramtanay&show_icons=true&theme=tokyonight)
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=ramtanay&theme=tokyonight)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ramtanay&layout=compact&theme=tokyonight)
-
-</div>
-
----
-
 ### ✨ Fun Fact
 > *“Machines learn from data, but developers learn from mistakes — and I love both!”* 😄
