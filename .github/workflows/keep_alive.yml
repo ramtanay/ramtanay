@@ -1,0 +1,26 @@
+name: Wake Up Render Backends
+
+on:
+  schedule:
+    # Runs every 14 minutes, Monday through Friday, using IST timezone
+    - cron: '*/14 * * * 1-5'
+      timezone: 'Asia/Kolkata'
+  workflow_dispatch: # Allows you to manually click a button to test it instantly
+
+jobs:
+  ping-backends:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Wake up APIs
+      run: |
+        echo "Starting server wake-up routine (IST Business Hours)..."
+        
+        # Replace these URLs with your actual Render backend URLs
+        # Add a /health endpoint or hit your root route
+        
+        curl -s -o /dev/null -w "Notepad Backend Status: %{http_code}\n" https://secure-notepad-ne8r.onrender.com
+        curl -s -o /dev/null -w "Chat Backend Status: %{http_code}\n" https://realtime-chat-app-r204.onrender.com
+        curl -s -o /dev/null -w "RAG Backend Status: %{http_code}\n" https://rag-project-zh1z.onrender.com
+        
+        echo "All ping requests sent successfully."
