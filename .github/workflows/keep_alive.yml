@@ -14,8 +14,8 @@ jobs:
         run: |
           echo "Starting server wake-up routine..."
 
-          curl -s -o /dev/null -w "Notepad Backend Status: %{http_code}\n" https://secure-notepad-ne8r.onrender.com/health
-          curl -s -o /dev/null -w "Chat Backend Status: %{http_code}\n" https://realtime-chat-app-r204.onrender.com/health
-          curl -s -o /dev/null -w "RAG Backend Status: %{http_code}\n" https://rag-project-zh1z.onrender.com/health
+          curl -L -s -o /dev/null -w "Notepad Backend Status: %{http_code}\n" https://secure-notepad-ne8r.onrender.com/health
+          curl -L -s -o /dev/null -w "Chat Backend Status: %{http_code}\n" https://realtime-chat-app-r204.onrender.com/health
+          curl -L -s -o /dev/null -w "RAG Backend Status: %{http_code}\n" https://rag-project-zh1z.onrender.com/health
 
           echo "All ping requests sent successfully."
