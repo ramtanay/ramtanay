@@ -2,7 +2,7 @@ name: Wake Up Render Backends
 
 on:
   schedule:
-    - cron: '*/10 * * * 1-5'
+    - cron: '*/5 * * * 1-5'   # Every 5 minutes, Monday-Friday
   workflow_dispatch:
 
 jobs:
@@ -10,12 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Wake up APIs
+      - name: Show Current Time
         run: |
+          echo "Current UTC Time:"
+          date -u
+
+      - name: Wake Up APIs
+        run: |
+          echo "========================================"
           echo "Starting server wake-up routine..."
+          echo "========================================"
 
-          curl -L -s -o /dev/null -w "Notepad Backend Status: %{http_code}\n" https://secure-notepad-ne8r.onrender.com/health
-          curl -L -s -o /dev/null -w "Chat Backend Status: %{http_code}\n" https://realtime-chat-app-r204.onrender.com/health
-          curl -L -s -o /dev/null -w "RAG Backend Status: %{http_code}\n" https://rag-project-zh1z.onrender.com/health
+          curl --max-time 30 -L -s -o /dev/null -w "Notepad Backend Status: %{http_code}\n" \
+            https://secure-notepad-ne8r.onrender.com/health
 
-          echo "All ping requests sent successfully."
+          curl --max-time 30 -L -s -o /dev/null -w "Chat Backend Status: %{http_code}\n" \
+            https://realtime-chat-app-r204.onrender.com/health
+
+          curl --max-time 30 -L -s -o /dev/null -w "RAG Backend Status: %{http_code}\n" \
+            https://rag-project-zh1z.onrender.com/health
+
+          echo "========================================"
+          echo "All ping requests completed."
+          echo "========================================"
